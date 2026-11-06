@@ -1,3 +1,5 @@
+using System;
+
 public class Registro
 {
     public string _data = "";
@@ -6,6 +8,8 @@ public class Registro
 
     public void Exibir()
     {
-        // Protótipo: exibir a data, a pergunta e a resposta deste registro.
+        Console.WriteLine($"Data: {_data}");
+        Console.WriteLine($"Pergunta: {_textoPergunta}");
+        Console.WriteLine($"Resposta: {_textoResposta}");
     }
 }

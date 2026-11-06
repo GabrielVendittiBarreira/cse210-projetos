@@ -4,11 +4,11 @@ Autor: Gabriel Venditti Barreira
 
 ## Escopo desta atividade
 
-Este documento prepara o design e os protótipos compiláveis solicitados na atividade de design de abstração. Os métodos ainda não implementam as funcionalidades do projeto completo. Não é um registro de reunião realizada nem comprovação de participação em grupo.
+Este documento registra o design preparado na atividade de abstração. A implementação completa do Programa de Diário foi adicionada depois, preservando as classes e responsabilidades descritas aqui. O documento não é um registro de reunião realizada nem comprovação de participação em grupo.
 
-## Visão geral do programa planejado
+## Visão geral do programa
 
-O programa ajuda o usuário a manter um diário por meio de perguntas aleatórias. Cada registro reúne data, pergunta e resposta. Um menu permitirá escrever, exibir, salvar, carregar e sair.
+O programa ajuda o usuário a manter um diário por meio de perguntas aleatórias. Cada registro reúne data, pergunta e resposta. O menu permite escrever, exibir, salvar, carregar e sair.
 
 | Opção planejada | Entrada | Comportamento e saída |
 | --- | --- | --- |
@@ -18,7 +18,7 @@ O programa ajuda o usuário a manter um diário por meio de perguntas aleatória
 | Carregar | Nome do arquivo | Ler o arquivo e substituir os registros atuais pelos registros carregados. |
 | Sair | Escolha da opção de saída | Encerrar o laço do menu e terminar o programa. |
 
-O gerador terá pelo menos cinco perguntas diferentes na implementação. A data será armazenada como `string`, conforme a simplificação permitida na especificação.
+O gerador contém oito perguntas diferentes e evita repetições consecutivas. A data é armazenada como `string`, conforme a simplificação permitida na especificação.
 
 ## Classes e responsabilidades
 
@@ -61,7 +61,7 @@ classDiagram
     Diario "1" o-- "0..*" Registro : armazena
 ```
 
-## Fluxo planejado para escrever um registro
+## Fluxo para escrever um registro
 
 1. `Program` solicita uma pergunta ao `GeradorDePerguntas`.
 2. `Program` exibe a pergunta e lê a resposta do usuário.
@@ -75,7 +75,7 @@ classDiagram
 - `Registro` controla sua própria apresentação. O diário precisa saber apenas que cada registro pode ser exibido.
 - `GeradorDePerguntas` separa a obtenção de perguntas do menu. A fonte pode mudar sem alterar a assinatura de `ObterPerguntaAleatoria()`.
 - `AdicionarRegistro` oferece uma operação de domínio em vez de expor ao código chamador os detalhes da coleção.
-- Ao carregar, a implementação deverá substituir a coleção, conforme a especificação, em vez de anexar os dados ao diário atual. É recomendável concluir a leitura antes de trocar a coleção, para não perder os dados atuais se o arquivo não puder ser lido.
+- Ao carregar, a implementação substitui a coleção, conforme a especificação, em vez de anexar os dados ao diário atual. A leitura e a validação são concluídas antes de trocar a coleção, para preservar os dados atuais se o arquivo não puder ser lido.
 
 ## Avalie o Design — apoio ao questionário
 
@@ -114,9 +114,9 @@ O chamador expressa a intenção de adicionar um registro. A classe `Diario` dec
 
 O questionário deve ser respondido individualmente no Canvas. A captura de tela precisa ser obtida durante a reunião real; este documento não substitui essa etapa.
 
-## Verificação dos protótipos
+## Implementação e verificação
 
-Os métodos `void` contêm somente comentários. O método que retorna `string` contém `return "";`, evitando erro de compilação nesta etapa. As listas são inicializadas, e os textos começam vazios.
+Os protótipos iniciais foram completados. `Diario` administra os registros e a persistência JSON; `Registro` exibe seus dados; `GeradorDePerguntas` sorteia as perguntas; `Program` coordena o menu, valida entradas e trata falhas de arquivo. Os detalhes de execução e os testes estão em [README.md](README.md).
 
 Compilar a partir da raiz do repositório:
 
