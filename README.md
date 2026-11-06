@@ -1,4 +1,7 @@
-# cse210-ww-modelo-pt
-Este é o código inicial para os alunos da versão mundial do conteúdo do CSE 210.
+# Projetos CSE 210
+
+Aluno: Gabriel Venditti Barreira
+
+Repositório de atividades do curso CSE 210 — Programação com Classes.
 
 Este repositório contém o código inicial para vários projetos diferentes.
